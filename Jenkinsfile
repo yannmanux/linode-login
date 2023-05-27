@@ -3,9 +3,9 @@ pipeline {
 
     stages {
 
-        stage ( 'ssh to ec2 instance') {
+        stage ( 'Deploy') {
             steps {
-                sshagent (['manu-ssh']) {
+                sshagent (credentials : ['manu-ssh']) {
                     sh 'ssh root@172.105.152.100 '
                 }
              }
