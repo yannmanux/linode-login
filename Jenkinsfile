@@ -6,7 +6,9 @@ pipeline {
         stage ( 'Deploy') {
             steps {
                 sshagent (credentials : ['manu-ssh']) {
-                    sh 'ssh root@172.105.152.100 '
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no -p 22 root@172.105.152.100 "docker ps"
+                    '''
                 }
              }
          } 
